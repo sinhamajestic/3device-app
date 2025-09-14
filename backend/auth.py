@@ -1,7 +1,7 @@
 import jwt
 from fastapi import HTTPException, Security
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from .config import settings
+from config import settings
 import requests
 from cachetools import TTLCache
 
