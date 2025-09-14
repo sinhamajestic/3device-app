@@ -9,3 +9,4 @@ requests
 PyJWT
 alembic
 cachetools
+pydantic-settings
