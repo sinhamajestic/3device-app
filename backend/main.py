@@ -2,16 +2,16 @@ import logging
 from fastapi import FastAPI, Depends, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
-from . import crud, models, schemas, auth
-from .database import SessionLocal, engine
-from .config import settings
+import crud
+import models
+import schemas
+import auth
+from database import SessionLocal, engine
+from config import settings
 
 # This line ensures that a .env file is loaded if present
 from dotenv import load_dotenv
 load_dotenv()
-
-# Create database tables (Alembic is the preferred way, but this is a fallback)
-# models.Base.metadata.create_all(bind=engine)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -102,7 +102,7 @@ async def force_logout_and_login(
     # Ensure the device being logged out belongs to the user
     session_to_delete = crud.get_session_by_device_id(db, force_logout_data.device_to_logout)
     if not session_to_delete or session_to_delete.user_id != user_id:
-         raise HTTPException(status_code=403, detail="Device does not belong to the current user")
+        raise HTTPException(status_code=403, detail="Device does not belong to the current user")
 
     crud.delete_session_by_device_id(db, device_id=force_logout_data.device_to_logout)
     logger.info(f"Forcefully logged out device {force_logout_data.device_to_logout} for user {user_id}")
@@ -155,3 +155,15 @@ async def logout_session(
         logger.info(f"User {user_id} logged out from device {device.device_id}")
     
     return
+
+@app.get("/api/v1/user/profile", response_model=schemas.UserProfile, tags=["User"])
+async def get_user_profile(token: dict = Depends(auth.verify_token)):
+    """
+    Retrieves the profile information for the authenticated user.
+    This endpoint is protected and requires a valid access token.
+    """
+    return {
+        "full_name": token.get("name", "N/A"),
+        "phone_number": token.get("https://schemas.yourapp.com/phone_number", "Not Provided")
+    }
+
