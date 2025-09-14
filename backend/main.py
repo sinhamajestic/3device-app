@@ -26,7 +26,7 @@ app = FastAPI(
 # Configure CORS
 origins = [
     "http://localhost:3000",
-    # Add your deployed frontend URL here, e.g., "https://your-app.vercel.app"
+    "https://3device-app.vercel.app"
 ]
 
 app.add_middleware(
