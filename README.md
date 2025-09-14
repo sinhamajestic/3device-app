@@ -3,6 +3,8 @@
 **Submission for the SDE Internship Task**
 
 > A full-stack example project demonstrating a robust concurrent session management system that limits a user account to a configurable number of simultaneous devices (N = 3 in this submission). When a user attempts an (N+1)th login, they can choose a previous device to remotely log out; that kicked device receives a graceful, real-time termination notification.
+> Testing User Credentials:
+tester@example.com : hi_tester@1
 
 ---
 
