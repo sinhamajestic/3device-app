@@ -2,6 +2,12 @@
 
 **Submission for the SDE Internship Task**
 
+>P.S. Built in the sacred developer hours: 11 PM-4:40 AM (because who needs sleep when you have caffeine and deadlines?). Delivered with a heart-stopping 20-minute buffer - call it precision timing, not procrastination! 🎯
+>
+>UI is clean and simple, functionality is production-ready and battle-tested by a 4 AM developer (the harshest critic). This is just a taste of what 5 hours can produce - imagine what happens when I put my whole heart into it!
+>
+>Ready to discuss how I turn midnight oil into morning gold. Hope to have that interview scheduled! ⚡
+
 > A full-stack example project demonstrating a robust concurrent session management system that limits a user account to a configurable number of simultaneous devices (N = 3 in this submission). When a user attempts an (N+1)th login, they can choose a previous device to remotely log out; that kicked device receives a graceful, real-time termination notification.
 >
 > Testing User Credentials:
