@@ -4,6 +4,7 @@ from logging.config import fileConfig
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from alembic import context
+from pathlib import Path
 
 # This makes modules like 'models.py' and 'database.py' importable.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
