@@ -156,14 +156,13 @@ async def logout_session(
     
     return
 
-@app.get("/api/v1/user/profile", response_model=schemas.UserProfile, tags=["User"])
+@app.get("/api/v1/user/profile", response_model=schemas.User, tags=["User"])
 async def get_user_profile(token: dict = Depends(auth.verify_token)):
     """
-    Retrieves the profile information for the authenticated user.
-    This endpoint is protected and requires a valid access token.
+    Retrieves the user's full name and phone number from the JWT.
+    This requires setting up a custom claim in Auth0.
     """
     return {
         "full_name": token.get("name", "N/A"),
-        "phone_number": token.get("https://schemas.yourapp.com/phone_number", "Not Provided")
+        "phone_number": token.get("https://3device-app.com/phone_number", "Not Provided")
     }
-
